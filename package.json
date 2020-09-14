@@ -1,0 +1,21 @@
+{
+  "name": "@jimmysawczuk/send-telegram-message",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "author": "Jimmy Sawczuk <github@jimmysawczuk.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@actions/core": "^1.2.5",
+    "@actions/github": "^4.0.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.24.0",
+    "prettier": "^2.1.1"
+  },
+  "scripts": {
+    "build:telegram:send-message": "ncc build -o telegram/send-message/dist/index.js telegram/send-message/src/main.js",
+    "prettier": "prettier -w '**/src/*.js' '**/*.yml' package.json"
+  }
+}
