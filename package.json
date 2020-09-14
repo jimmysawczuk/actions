@@ -1,7 +1,6 @@
 {
-  "name": "@jimmysawczuk/send-telegram-message",
+  "name": "@jimmysawczuk/actions",
   "version": "1.0.0",
-  "main": "dist/main.js",
   "author": "Jimmy Sawczuk <github@jimmysawczuk.com>",
   "license": "MIT",
   "private": true,
