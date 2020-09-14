@@ -1,0 +1,16 @@
+name: "Get tag from github.ref"
+description: "Get the tag from github.ref"
+author: "Jimmy Sawczuk"
+inputs:
+  ref:
+    description: "The ref to clean"
+    required: true
+outputs:
+  tag:
+    description: "The cleaned tag"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  icon: "filter"
+  color: "gray-dark"
