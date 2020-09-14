@@ -17,8 +17,11 @@
     "clean:telegram:send-message": "rm -rf telegram/send-message/dist",
     "build:telegram:send-message": "ncc build -o telegram/send-message/dist telegram/send-message/src/main.js",
 
-    "clean:all": "yarn clean:telegram:send-message",
-    "build:all": "yarn build:telegram:send-message",
+    "clean:github:get-tag-from-ref": "rm -rf github/get-tag-from-ref/dist",
+    "build:github:get-tag-from-ref": "ncc build -o github/get-tag-from-ref/dist github/get-tag-from-ref/src/main.js",
+
+    "clean:all": "yarn clean:telegram:send-message && yarn clean:github:get-tag-from-ref",
+    "build:all": "yarn build:telegram:send-message && yarn build:github:get-tag-from-ref",
     "prettier": "prettier -w '**/src/*.js' '**/*.yml' package.json"
   }
 }
