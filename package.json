@@ -14,7 +14,11 @@
     "prettier": "^2.1.1"
   },
   "scripts": {
-    "build:telegram:send-message": "ncc build -o telegram/send-message/dist/index.js telegram/send-message/src/main.js",
+    "clean:telegram:send-message": "rm -rf telegram/send-message/dist",
+    "build:telegram:send-message": "ncc build -o telegram/send-message/dist telegram/send-message/src/main.js",
+
+    "clean:all": "yarn clean:telegram:send-message",
+    "build:all": "yarn build:telegram:send-message",
     "prettier": "prettier -w '**/src/*.js' '**/*.yml' package.json"
   }
 }
