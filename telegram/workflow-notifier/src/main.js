@@ -8,8 +8,11 @@ async function run() {
     const telegramBotURL = core.getInput("telegramBotURL", {
       required: true,
     })
-    const message = core.getInput("message", { required: true })
+    // const message = core.getInput("message", { required: true })
     const parseMode = core.getInput("parseMode")
+
+    console.log("got here!")
+    return
 
     await fetch(telegramBotURL, {
       method: "POST",
