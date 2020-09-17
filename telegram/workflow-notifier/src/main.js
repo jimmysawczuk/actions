@@ -8,9 +8,11 @@ async function run() {
     const telegramBotURL = core.getInput("telegramBotURL", {
       required: true,
     })
+    const sha = core.getInput("commit", { required: true })
     // const message = core.getInput("message", { required: true })
-    const parseMode = core.getInput("parseMode")
+    // const parseMode = core.getInput("parseMode")
 
+    console.log(process.env, sha)
     console.log("got here!")
     return
 

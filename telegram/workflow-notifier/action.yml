@@ -8,25 +8,22 @@ inputs:
   telegramBotURL:
     description: "The URL of the sendMessage endpoint for your bot"
     required: true
-  message:
-    description: "The message to send"
+  commit:
+    description: "The Git SHA."
     required: true
-  parseMode:
-    description: "The parse mode to use"
-    required: false
-    default: "HTML"
   beforeStart:
     description: "Send notification when job starts"
-    default: "false"
+    default: false
   inline:
     description: "Send notification when step is invoked"
-    default: "true"
+    default: false
   afterSuccess:
     description: "Send notification when job completes successfully"
-    default: "false"
-  afterSuccess:
+    default: false
+  afterError:
     description: "Send notification when job errors"
-    default: "false"
+    default: false
+
 runs:
   using: "node12"
   main: "dist/index.js"
