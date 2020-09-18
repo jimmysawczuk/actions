@@ -16,10 +16,10 @@ async function run() {
 
     console.log(process.env)
 
-    const resp = await octo.actions.getJobForWorkflowRun({
+    const resp = await octo.actions.getWorkflowRun({
       owner: process.env.GITHUB_REPOSITORY.split("/")[0],
       repo: process.env.GITHUB_REPOSITORY.split("/")[1],
-      job_id: process.env.GITHUB_RUN_ID,
+      run_id: process.env.GITHUB_RUN_ID,
     })
     console.log(resp)
 
