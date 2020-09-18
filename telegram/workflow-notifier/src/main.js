@@ -1,15 +1,27 @@
 const core = require("@actions/core")
+const github = require("@actions/github")
 const querystring = require("querystring")
 const fetch = require("node-fetch")
 
 async function run() {
   try {
+    const octo = github.getOctokit(
+      core.getInput("githubToken", { required: true }),
+    )
+
     const chatID = core.getInput("chatID", { required: true })
     const telegramBotURL = core.getInput("telegramBotURL", {
       required: true,
     })
 
     console.log(process.env)
+
+    const resp = await octo.actions.getJobForWorkflowRun({
+      owner: process.env.GITHUB_REPOSITORY.split("/")[0],
+      repo: process.env.GITHUB_REPOSITORY.split("/")[1],
+      job_id: process.env.GITHUB_RUN_ID,
+    })
+    console.log(resp)
 
     core.setFailed("failed")
 
