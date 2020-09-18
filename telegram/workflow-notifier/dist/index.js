@@ -2012,6 +2012,8 @@ async function run() {
  - Commit: <a href="https://github.com/${repo}/commit/${sha}">${shortSha}</a>
 `
 
+    console.log(message)
+
     await fetch(telegramBotURL, {
       method: "POST",
       headers: {
