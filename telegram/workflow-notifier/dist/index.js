@@ -2001,6 +2001,10 @@ async function run() {
       required: true,
     })
 
+    console.log(process.env)
+
+    core.setFailed("failed")
+
     const repo = process.env.GITHUB_REPOSITORY
     const sha = process.env.GITHUB_SHA
     const shortSha = sha.substr(0, 7)
@@ -2010,8 +2014,6 @@ async function run() {
     const message = `${jobName} starting on <a href="https://github.com/${repo}">${repo}</a>
 
  - Commit: <a href="https://github.com/${repo}/commit/${sha}">${shortSha}</a>`
-
-    console.log(message)
 
     const body = querystring.stringify({
       chat_id: chatID,
@@ -2024,7 +2026,7 @@ async function run() {
       "Content-Type": "application/x-www-form-urlencoded",
     }
 
-    console.log(body)
+    // console.log(body)
 
     await fetch(telegramBotURL, {
       method: "POST",
@@ -2038,7 +2040,7 @@ async function run() {
 
         return resp.json()
       })
-      .then((resp) => {
+      .then((_) => {
         core.debug("Sent!")
       })
       .catch((e) => {
