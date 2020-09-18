@@ -2000,13 +2000,17 @@ async function run() {
     const telegramBotURL = core.getInput("telegramBotURL", {
       required: true,
     })
-    const sha = core.getInput("commit", { required: true })
-    // const message = core.getInput("message", { required: true })
-    // const parseMode = core.getInput("parseMode")
 
-    console.log(process.env, sha)
-    console.log("got here!")
-    return
+    const repo = process.env.GITHUB_REPOSITORY
+    const sha = process.env.GITHUB_SHA
+    const shortSha = sha.substr(0, 7)
+    const jobName = process.env.GITHUB_JOB
+    const workflowName = process.env.GITHUB_WORKFLOW
+
+    const message = `${jobName} starting on <a href="https://github.com/${repo}>${repo}</a>
+
+ - Commit: <a href="https://github.com/${repo}/commit/${sha}">${shortSha}</a>
+`
 
     await fetch(telegramBotURL, {
       method: "POST",
@@ -2015,7 +2019,7 @@ async function run() {
       },
       body: querystring.stringify({
         chat_id: chatID,
-        parse_mode: parseMode,
+        parse_mode: "HTML",
         disable_web_page_preview: "true",
         text: message,
       }),
@@ -2028,12 +2032,13 @@ async function run() {
         return resp.json()
       })
       .then((resp) => {
-        console.log("sent!", resp)
+        core.debug("Sent!")
       })
       .catch((e) => {
         throw e
       })
   } catch (e) {
+    core.error(e)
     core.setFailed(e)
   }
 }
