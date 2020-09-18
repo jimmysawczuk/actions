@@ -2014,17 +2014,23 @@ async function run() {
 
     console.log(message)
 
+    const body = querystring.stringify({
+      chat_id: chatID,
+      parse_mode: "HTML",
+      disable_web_page_preview: "true",
+      text: message,
+    })
+
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+    }
+
+    console.log(body)
+
     await fetch(telegramBotURL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: querystring.stringify({
-        chat_id: chatID,
-        parse_mode: "HTML",
-        disable_web_page_preview: "true",
-        text: message,
-      }),
+      headers,
+      body,
     })
       .then((resp) => {
         if (!resp.ok) {
