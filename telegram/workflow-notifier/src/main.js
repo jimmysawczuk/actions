@@ -15,7 +15,7 @@ async function run() {
     const jobName = process.env.GITHUB_JOB
     const workflowName = process.env.GITHUB_WORKFLOW
 
-    const message = `${jobName} starting on <a href="https://github.com/${repo}>${repo}</a>
+    const message = `${jobName} starting on <a href="https://github.com/${repo}">${repo}</a>
 
  - Commit: <a href="https://github.com/${repo}/commit/${sha}">${shortSha}</a>`
 
