@@ -17,8 +17,7 @@ async function run() {
 
     const message = `${jobName} starting on <a href="https://github.com/${repo}>${repo}</a>
 
- - Commit: <a href="https://github.com/${repo}/commit/${sha}">${shortSha}</a>
-`
+ - Commit: <a href="https://github.com/${repo}/commit/${sha}">${shortSha}</a>`
 
     console.log(message)
 
