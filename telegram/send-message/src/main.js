@@ -1,6 +1,7 @@
 const core = require("@actions/core")
 const querystring = require("querystring")
 const fetch = require("node-fetch")
+const { default: sendMessage } = require("../../../lib/telegram")
 
 async function run() {
   try {
@@ -11,31 +12,9 @@ async function run() {
     const message = core.getInput("message", { required: true })
     const parseMode = core.getInput("parseMode")
 
-    await fetch(telegramBotURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: querystring.stringify({
-        chat_id: chatID,
-        parse_mode: parseMode,
-        disable_web_page_preview: "true",
-        text: message,
-      }),
+    sendMessage(telegramBotURL, chatID, message, {
+      parseMode,
     })
-      .then((resp) => {
-        if (!resp.ok) {
-          throw `Telegram request failed: ${JSON.stringify(resp)}`
-        }
-
-        return resp.json()
-      })
-      .then((resp) => {
-        console.log("sent!", resp)
-      })
-      .catch((e) => {
-        throw e
-      })
   } catch (e) {
     core.setFailed(e)
   }

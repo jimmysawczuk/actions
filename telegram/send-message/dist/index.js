@@ -2,6 +2,47 @@ module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 834:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ sendMessage
+/* harmony export */ });
+async function sendMessage(botURL, chatID, message, opts = {}) {
+  opts = {
+    parseMode: "HTML",
+    disableWebPagePreview: undefined,
+    ...opts,
+  }
+
+  await fetch(botURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: querystring.stringify({
+      chat_id: chatID,
+      parse_mode: opts.parseMode,
+      disable_web_page_preview: opts.disableWebPagePreview ? "true" : "false",
+      text: message,
+    }),
+  })
+    .then((resp) => {
+      return resp.json()
+    })
+    .then((resp) => {
+      console.log("sent", resp)
+    })
+    .catch((e) => {
+      throw e
+    })
+}
+
+
+/***/ }),
+
 /***/ 351:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -1993,6 +2034,7 @@ exports.FetchError = FetchError;
 const core = __webpack_require__(186)
 const querystring = __webpack_require__(191)
 const fetch = __webpack_require__(467)
+const { default: sendMessage } = __webpack_require__(834)
 
 async function run() {
   try {
@@ -2003,31 +2045,9 @@ async function run() {
     const message = core.getInput("message", { required: true })
     const parseMode = core.getInput("parseMode")
 
-    await fetch(telegramBotURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: querystring.stringify({
-        chat_id: chatID,
-        parse_mode: parseMode,
-        disable_web_page_preview: "true",
-        text: message,
-      }),
+    sendMessage(telegramBotURL, chatID, message, {
+      parseMode,
     })
-      .then((resp) => {
-        if (!resp.ok) {
-          throw `Telegram request failed: ${JSON.stringify(resp)}`
-        }
-
-        return resp.json()
-      })
-      .then((resp) => {
-        console.log("sent!", resp)
-      })
-      .catch((e) => {
-        throw e
-      })
   } catch (e) {
     core.setFailed(e)
   }
@@ -2142,6 +2162,34 @@ module.exports = require("zlib");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	__webpack_require__.ab = __dirname + "/";/************************************************************************/
