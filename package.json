@@ -7,8 +7,7 @@
   "dependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^4.0.0",
-    "node-fetch": "^2.6.1",
-    "precommit-hook": "^3.0.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",
@@ -18,8 +17,5 @@
     "clean": "node util/clean.js",
     "build": "node util/build.js",
     "prettier": "prettier -w '**/src/*.js' '**/*.yml' package.json"
-  },
-  "pre-commit": [
-    "build"
-  ]
+  }
 }
