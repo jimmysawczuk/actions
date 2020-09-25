@@ -9,7 +9,7 @@ inputs:
     description: "The URL of the sendMessage endpoint for your bot"
     required: true
   error:
-    description: "Error message"
+    description: "Error message (optional)"
     required: false
 runs:
   using: "node12"
