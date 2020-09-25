@@ -1,12 +1,12 @@
 const core = require("@actions/core")
 const { default: sendMessage } = require("../../../lib/telegram")
 
-function getMessage(commit, repo, job, runID, workflow) {
-  const runURL = `https://github.com/${repo}/runs/${runID}`
-  const commitURL = `https://github.com/${repo}/commit/${commit}`
+function getMessage(params) {
+  const runURL = `https://github.com/${params.repo}/actions/runs/${params.runID}`
+  const commitURL = `https://github.com/${params.repo}/commit/${params.commit}`
   const shortCommit = commit.substr(0, 7)
 
-  return `<b>Workflow ${workflow} <a href="${runURL}">failed</a>:</b>
+  return `<b>Workflow ${params.workflow} <a href="${runURL}">failed</a></b>
 
  - commit: <a href="${commitURL}">${shortCommit}</a>`
 }
