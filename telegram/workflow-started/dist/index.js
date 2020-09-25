@@ -2031,18 +2031,18 @@ exports.FetchError = FetchError;
 
 /***/ }),
 
-/***/ 754:
+/***/ 859:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(186)
 const { default: sendMessage } = __webpack_require__(834)
 
-function getMessage(commit, repo, job, runID, workflow, error) {
+function getMessage(commit, repo, job, runID, workflow) {
   const runURL = `https://github.com/${repo}/runs/${runID}`
   const commitURL = `https://github.com/${repo}/commit/${commit}`
   const shortCommit = commit.substr(0, 7)
 
-  return `<b>Job ${job} <a href="${runURL}">failed</a>:</b>
+  return `<b>Workflow ${workflow} <a href="${runURL}">started</a>:</b>
 
  - commit: <a href="${commitURL}">${shortCommit}</a>`
 }
@@ -2062,7 +2062,7 @@ async function run() {
     sendMessage(
       telegramBotURL,
       chatID,
-      getMessage(commit, repo, job, runID, workflow, error),
+      getMessage(commit, repo, job, runID, workflow),
       {
         parseMode: "HTML",
       },
@@ -2215,6 +2215,6 @@ module.exports = require("zlib");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(754);
+/******/ 	return __webpack_require__(859);
 /******/ })()
 ;
