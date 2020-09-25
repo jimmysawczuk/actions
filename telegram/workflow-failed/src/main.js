@@ -4,7 +4,7 @@ const { default: sendMessage } = require("../../../lib/telegram")
 function getMessage(params) {
   const runURL = `https://github.com/${params.repo}/actions/runs/${params.runID}`
   const commitURL = `https://github.com/${params.repo}/commit/${params.commit}`
-  const shortCommit = commit.substr(0, 7)
+  const shortCommit = params.commit.substr(0, 7)
 
   return `<b>Workflow ${params.workflow} <a href="${runURL}">failed</a></b>
 
