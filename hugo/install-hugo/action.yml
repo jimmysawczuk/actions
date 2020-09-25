@@ -1,4 +1,4 @@
-name: "Hugo installer"
+name: "Install Hugo"
 description: "Install the specified version of Hugo"
 author: "Jimmy Sawczuk"
 inputs:
