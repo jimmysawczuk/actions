@@ -1,6 +1,4 @@
 const core = require("@actions/core")
-const querystring = require("querystring")
-const fetch = require("node-fetch")
 const { default: sendMessage } = require("../../../lib/telegram")
 
 async function run() {
