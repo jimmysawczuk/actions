@@ -11,6 +11,9 @@ inputs:
   url:
     description: "The URL of the deployed site (optional)"
     required: false
+  startTime:
+    description: "When the workflow started"
+    required: false
 runs:
   using: "node12"
   main: "dist/main.js"

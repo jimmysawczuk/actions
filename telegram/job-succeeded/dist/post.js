@@ -2056,6 +2056,10 @@ async function run() {
       required: true,
     })
     const url = core.getInput("url")
+    const startTime = core.getInput("startTime")
+
+    console.log(startTime)
+
     const commit = process.env.GITHUB_SHA
     const repo = process.env.GITHUB_REPOSITORY
     const job = process.env.GITHUB_JOB
@@ -2071,6 +2075,7 @@ async function run() {
         job,
         runID,
         url,
+        startTime,
       }),
       {
         parseMode: "HTML",
