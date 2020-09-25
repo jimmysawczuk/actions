@@ -1,4 +1,5 @@
 const core = require("@actions/core")
+var formatDuration = require("date-fns/formatDuration")
 const { default: sendMessage } = require("../../../lib/telegram")
 
 function getMessage(params) {
@@ -6,11 +7,14 @@ function getMessage(params) {
   const commitURL = `https://github.com/${params.repo}/commit/${params.commit}`
   const shortCommit = params.commit.substr(0, 7)
 
+  const duration = formatDuration(new Date() - new Date(startTime))
+
   return `<b>Job ${params.job} <a href="${runURL}">succeeded</a></b>
 
  - repo: <a href="https://github.com/${params.repo}">${params.repo}</a>
  - commit: <a href="${commitURL}">${shortCommit}</a>
- - url: <a href="${params.url}">${params.url}</a>`
+ - url: <a href="${params.url}">${params.url}</a>
+ - duration: ${duration}`
 }
 
 async function run() {
