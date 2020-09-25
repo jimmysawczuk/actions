@@ -14,6 +14,8 @@ inputs:
 runs:
   using: "node12"
   main: "dist/main.js"
+  post-if: "failure()"
+  post: "dist/post.js"
 branding:
   icon: "filter"
   color: "gray-dark"
