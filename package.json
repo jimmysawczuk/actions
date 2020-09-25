@@ -15,6 +15,7 @@
     "prettier": "^2.1.1"
   },
   "scripts": {
+    "clean": "node util/clean.js",
     "build": "node util/build.js",
     "prettier": "prettier -w '**/src/*.js' '**/*.yml' package.json"
   },

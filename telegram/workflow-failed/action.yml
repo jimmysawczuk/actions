@@ -10,7 +10,9 @@ inputs:
     required: true
 runs:
   using: "node12"
-  main: "dist/index.js"
+  main: "dist/main.js"
+  post-if: "failure()"
+  post: "dist/post.js"
 branding:
   icon: "filter"
   color: "gray-dark"

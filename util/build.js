@@ -1,27 +1,28 @@
 const ncc = require("@vercel/ncc")
 const fs = require("fs")
+const dirs = require("./dirs")
 
 async function run() {
-  const dirs = [
-    "github/get-tag-from-ref",
-    "telegram/job-started",
-    "telegram/job-failed",
-    "telegram/send-message",
-    "telegram/workflow-failed",
-    "telegram/workflow-started",
-  ]
-
   for (let dir of dirs) {
     console.log(`Processing ${dir}`)
-    ncc(`${__dirname}/../${dir}/src/main.js`, {
-      quiet: true,
-    }).then((resp) => {
-      fs.mkdirSync(`${__dirname}/../${dir}/dist`, {
-        recursive: true,
+
+    for (let name of ["main", "post", "pre"]) {
+      if (!fs.existsSync(`${__dirname}/../${dir}/src/${name}.js`)) {
+        continue
+      }
+
+      console.log(`  building ${name}`)
+
+      ncc(`${__dirname}/../${dir}/src/${name}.js`, {
+        quiet: true,
+      }).then((resp) => {
+        fs.mkdirSync(`${__dirname}/../${dir}/dist`, {
+          recursive: true,
+        })
+        fs.writeFileSync(`${__dirname}/../${dir}/dist/${name}.js`, resp.code)
       })
-      fs.writeFileSync(`${__dirname}/../${dir}/dist/index.js`, resp.code)
-    })
-    console.log("...done!")
+    }
+    console.log(`done with ${dir}`)
   }
 }
 
