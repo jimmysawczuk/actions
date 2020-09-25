@@ -1,0 +1,21 @@
+name: "Send Job Succeeded Message"
+description: "Send Telegram Message"
+author: "Jimmy Sawczuk"
+inputs:
+  chatID:
+    description: "The chat ID to send the message to"
+    required: true
+  telegramBotURL:
+    description: "The URL of the sendMessage endpoint for your bot"
+    required: true
+  url:
+    description: "The URL of the deployed site (optional)"
+    required: false
+runs:
+  using: "node12"
+  main: "dist/main.js"
+  post-if: "success()"
+  post: "dist/post.js"
+branding:
+  icon: "filter"
+  color: "gray-dark"
