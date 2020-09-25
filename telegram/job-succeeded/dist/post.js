@@ -2836,7 +2836,7 @@ function getMessage(params) {
   const commitURL = `https://github.com/${params.repo}/commit/${params.commit}`
   const shortCommit = params.commit.substr(0, 7)
 
-  const duration = formatDuration(new Date() - new Date(startTime))
+  const duration = formatDuration(new Date() - new Date(params.startTime))
 
   return `<b>Job ${params.job} <a href="${runURL}">succeeded</a></b>
 
