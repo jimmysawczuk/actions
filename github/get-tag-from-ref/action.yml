@@ -10,7 +10,7 @@ outputs:
     description: "The cleaned tag"
 runs:
   using: "node12"
-  main: "dist/index.js"
+  main: "dist/main.js"
 branding:
   icon: "filter"
   color: "gray-dark"
