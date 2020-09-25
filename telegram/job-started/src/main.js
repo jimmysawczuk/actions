@@ -28,7 +28,7 @@ async function run() {
       chatID,
       getMessage(commit, repo, job, runID, workflow),
       {
-        parseMode,
+        parseMode: "HTML",
       },
     )
   } catch (e) {
