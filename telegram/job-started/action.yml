@@ -10,8 +10,7 @@ inputs:
     required: true
 runs:
   using: "node12"
-  pre: "dist/index.js"
-  main: ""
+  main: "dist/index.js"
 branding:
   icon: "filter"
   color: "gray-dark"
