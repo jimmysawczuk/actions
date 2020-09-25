@@ -8,6 +8,7 @@ function getMessage(params) {
 
   return `<b>Job ${params.job} <a href="${runURL}">failed</a></b>
 
+ - repo: <a href="https://github.com/${params.repo}">${params.repo}</a>
  - commit: <a href="${commitURL}">${shortCommit}</a>`
 }
 

@@ -1,5 +1,7 @@
 const core = require("@actions/core")
-var formatDuration = require("date-fns/formatDuration")
+const intervalToDuration = require("date-fns/intervalToDuration")
+const formatDuration = require("date-fns/formatDuration")
+
 const { default: sendMessage } = require("../../../lib/telegram")
 
 function getMessage(params) {
@@ -7,12 +9,12 @@ function getMessage(params) {
   const commitURL = `https://github.com/${params.repo}/commit/${params.commit}`
   const shortCommit = params.commit.substr(0, 7)
 
-  const now = new Date()
-  const then = new Date(params.startTime)
-
-  console.log(now, then, +now, +then)
-
-  const duration = formatDuration(now - then)
+  const duration = formatDuration(
+    intervalToDuration({
+      start: new Date(params.startTime),
+      end: new Date(),
+    }),
+  )
 
   return `<b>Job ${params.job} <a href="${runURL}">succeeded</a></b>
 
