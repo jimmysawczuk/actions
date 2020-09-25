@@ -10,6 +10,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => /* binding */ sendMessage
 /* harmony export */ });
+const querystring = __webpack_require__(191)
+const fetch = __webpack_require__(467)
+
 async function sendMessage(botURL, chatID, message, opts = {}) {
   opts = {
     parseMode: "HTML",
@@ -2032,8 +2035,6 @@ exports.FetchError = FetchError;
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(186)
-const querystring = __webpack_require__(191)
-const fetch = __webpack_require__(467)
 const { default: sendMessage } = __webpack_require__(834)
 
 async function run() {
