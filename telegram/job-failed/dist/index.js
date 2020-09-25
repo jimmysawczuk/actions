@@ -371,7 +371,7 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 194:
+/***/ 754:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(186)
@@ -382,7 +382,7 @@ function getMessage(commit, repo, job, runID, workflow) {
   const commitURL = `https://github.com/${repo}/commit/${commit}`
   const shortCommit = commit.substr(0, 7)
 
-  return `<b>Job ${job} <a href="${runURL}">started</a>:</b>
+  return `<b>Job ${job} <a href="${runURL}">failed</a>:</b>
 
  - commit: <a href="${commitURL}">${shortCommit}</a>`
 }
@@ -499,6 +499,6 @@ module.exports = require("path");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(194);
+/******/ 	return __webpack_require__(754);
 /******/ })()
 ;
