@@ -6,7 +6,7 @@ function getMessage(commit, repo, job, runID, workflow) {
   const commitURL = `https://github.com/${repo}/commit/${commit}`
   const shortCommit = commit.substr(0, 7)
 
-  return `<b>Job ${job} <a href="${runURL}">started</a>:</b>
+  return `<b>Job ${job} <a href="${runURL}">failed</a>:</b>
 
  - commit: <a href="${commitURL}">${shortCommit}</a>`
 }

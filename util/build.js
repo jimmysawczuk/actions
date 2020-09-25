@@ -4,8 +4,9 @@ const fs = require("fs")
 async function run() {
   const dirs = [
     "github/get-tag-from-ref",
-    "telegram/send-message",
     "telegram/job-started",
+    "telegram/job-failed",
+    "telegram/send-message",
   ]
 
   for (let dir of dirs) {
