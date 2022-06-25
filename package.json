@@ -8,7 +8,7 @@
     "@actions/core": "^1.4.0",
     "@actions/github": "^5.0.0",
     "date-fns": "^2.22.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.28.6",
