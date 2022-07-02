@@ -7,9 +7,11 @@ inputs:
     required: true
 outputs:
   tag:
-    description: "The cleaned tag"
+    description: "The tag, if present"
+  branch:
+    description: "The branch, if present"
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/main.js"
 branding:
   icon: "filter"
