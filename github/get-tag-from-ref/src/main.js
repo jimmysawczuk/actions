@@ -8,7 +8,7 @@ async function run() {
       const tag = ref.replace("refs/tags/", "")
       core.setOutput("tag", tag)
 
-      if (ref.match(new Regexp("^refs/heads/"))) {
+      if (ref.match(new RegExp("^refs/heads/"))) {
         const branch = ref.replace("refs/heads/", "")
         core.setOutput("branch", branch)
       }
