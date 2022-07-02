@@ -9,9 +9,17 @@ const core = __webpack_require__(186)
 
 async function run() {
   try {
-    const tagName = core.getInput("ref", { required: true })
-    const tag = tagName.replace("refs/tags/", "")
-    core.setOutput("tag", tag)
+    const ref = core.getInput("ref", { required: true })
+
+    if (ref.match(new RegExp("^refs/tags/"))) {
+      const tag = ref.replace("refs/tags/", "")
+      core.setOutput("tag", tag)
+
+      if (ref.match(new Regexp("^ref/heads/"))) {
+        const branch = ref.replace("refs/heads/", "")
+        core.setOutput("branch", branch)
+      }
+    }
   } catch (e) {
     core.setFailed(e.message)
   }
