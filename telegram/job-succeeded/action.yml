@@ -15,7 +15,7 @@ inputs:
     description: "When the workflow started"
     required: false
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/main.js"
   post-if: "success()"
   post: "dist/post.js"

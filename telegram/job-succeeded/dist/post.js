@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 1935:
+/***/ 4437:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -13,8 +13,6 @@ __nccwpck_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ sendMessage)
 });
 
-;// CONCATENATED MODULE: external "querystring"
-const external_querystring_namespaceObject = require("querystring");
 ;// CONCATENATED MODULE: external "node:http"
 const external_node_http_namespaceObject = require("node:http");
 ;// CONCATENATED MODULE: external "node:https"
@@ -2129,8 +2127,6 @@ function fixResponseChunkedTransferBadEnding(request, errorCallback) {
 }
 
 ;// CONCATENATED MODULE: ./lib/telegram/index.js
-// const querystring = require("querystring")
-
 
 
 async function sendMessage(botURL, chatID, message, opts = {}) {
@@ -11900,7 +11896,7 @@ const core = __nccwpck_require__(2186)
 const intervalToDuration = __nccwpck_require__(2079)
 const formatDuration = __nccwpck_require__(8917)
 
-const { default: sendMessage } = __nccwpck_require__(1935)
+const { default: sendMessage } = __nccwpck_require__(4437)
 
 function getMessage(params) {
   const runURL = `https://github.com/${params.repo}/actions/runs/${params.runID}`

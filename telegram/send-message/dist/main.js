@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 935:
+/***/ 437:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -13,8 +13,6 @@ __nccwpck_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ sendMessage)
 });
 
-;// CONCATENATED MODULE: external "querystring"
-const external_querystring_namespaceObject = require("querystring");
 ;// CONCATENATED MODULE: external "node:http"
 const external_node_http_namespaceObject = require("node:http");
 ;// CONCATENATED MODULE: external "node:https"
@@ -2129,8 +2127,6 @@ function fixResponseChunkedTransferBadEnding(request, errorCallback) {
 }
 
 ;// CONCATENATED MODULE: ./lib/telegram/index.js
-// const querystring = require("querystring")
-
 
 
 async function sendMessage(botURL, chatID, message, opts = {}) {
@@ -9240,7 +9236,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(186)
-const { default: sendMessage } = __nccwpck_require__(935)
+const { default: sendMessage } = __nccwpck_require__(437)
 
 async function run() {
   try {
