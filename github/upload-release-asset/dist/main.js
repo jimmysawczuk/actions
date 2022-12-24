@@ -1,62 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 1058:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const core = __nccwpck_require__(2186)
-const { GitHub } = __nccwpck_require__(5438)
-const fs = __nccwpck_require__(7147)
-
-async function run() {
-  try {
-    // Get authenticated GitHub client (Ocktokit): https://github.com/actions/toolkit/tree/master/packages/github#usage
-    const github = new GitHub(process.env.GITHUB_TOKEN)
-
-    // Get the inputs from the workflow file: https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs
-    const uploadUrl = core.getInput("upload_url", { required: true })
-    const assetPath = core.getInput("asset_path", { required: true })
-    const assetName = core.getInput("asset_name", { required: true })
-    const assetContentType = core.getInput("asset_content_type", {
-      required: true,
-    })
-
-    // Determine content-length for header to upload asset
-    const contentLength = (filePath) => fs.statSync(filePath).size
-
-    // Setup headers for API call, see Octokit Documentation: https://octokit.github.io/rest.js/#octokit-routes-repos-upload-release-asset for more information
-    const headers = {
-      "content-type": assetContentType,
-      "content-length": contentLength(assetPath),
-    }
-
-    // Upload a release asset
-    // API Documentation: https://developer.github.com/v3/repos/releases/#upload-a-release-asset
-    // Octokit Documentation: https://octokit.github.io/rest.js/#octokit-routes-repos-upload-release-asset
-    const uploadAssetResponse = await github.repos.uploadReleaseAsset({
-      url: uploadUrl,
-      headers,
-      name: assetName,
-      file: fs.readFileSync(assetPath),
-    })
-
-    // Get the browser_download_url for the uploaded release asset from the response
-    const {
-      data: { browser_download_url: browserDownloadUrl },
-    } = uploadAssetResponse
-
-    // Set the output variable for use by other actions: https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs
-    core.setOutput("browser_download_url", browserDownloadUrl)
-  } catch (error) {
-    core.setFailed(error.message)
-  }
-}
-
-module.exports = run
-
-
-/***/ }),
-
 /***/ 7351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -9733,7 +9677,44 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-const run = __nccwpck_require__(1058)
+const github = __nccwpck_require__(5438)
+const core = __nccwpck_require__(2186)
+const fs = __nccwpck_require__(7147)
+
+async function run() {
+  try {
+    const octokit = github.getOctokit(process.env.GITHUB_TOKEN)
+
+    const uploadUrl = core.getInput("upload_url", { required: true })
+    const assetPath = core.getInput("asset_path", { required: true })
+    const assetName = core.getInput("asset_name", { required: true })
+    const assetContentType = core.getInput("asset_content_type", {
+      required: true,
+    })
+
+    const contentLength = (filePath) => fs.statSync(filePath).size
+
+    const headers = {
+      "content-type": assetContentType,
+      "content-length": contentLength(assetPath),
+    }
+
+    const uploadAssetResponse = await octokit.rest.repos.uploadReleaseAsset({
+      url: uploadUrl,
+      headers,
+      name: assetName,
+      file: fs.readFileSync(assetPath),
+    })
+
+    const {
+      data: { browser_download_url: browserDownloadUrl },
+    } = uploadAssetResponse
+
+    core.setOutput("browser_download_url", browserDownloadUrl)
+  } catch (error) {
+    core.setFailed(error.message)
+  }
+}
 
 run()
 
