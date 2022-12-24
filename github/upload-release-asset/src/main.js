@@ -26,6 +26,7 @@ async function run() {
       assetName,
       assetContentType,
       headers,
+      file: fs.readFileSync(assetPath).length,
     })
 
     const uploadAssetResponse = await octokit.rest.repos.uploadReleaseAsset({
