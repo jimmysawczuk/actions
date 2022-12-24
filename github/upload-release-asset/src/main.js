@@ -26,14 +26,14 @@ async function run() {
       assetName,
       assetContentType,
       headers,
-      file: fs.readFileSync(assetPath).length,
+      data: fs.readFileSync(assetPath).length,
     })
 
     const uploadAssetResponse = await octokit.rest.repos.uploadReleaseAsset({
       url: uploadUrl,
       headers,
       name: assetName,
-      file: fs.readFileSync(assetPath),
+      data: fs.readFileSync(assetPath),
     })
 
     console.log({
