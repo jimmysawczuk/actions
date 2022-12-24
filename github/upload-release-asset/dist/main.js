@@ -9714,6 +9714,10 @@ async function run() {
       file: fs.readFileSync(assetPath),
     })
 
+    console.log({
+      resp: uploadAssetResponse,
+    })
+
     const {
       data: { browser_download_url: browserDownloadUrl },
     } = uploadAssetResponse
