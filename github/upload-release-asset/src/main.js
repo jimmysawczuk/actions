@@ -20,6 +20,14 @@ async function run() {
       "content-length": contentLength(assetPath),
     }
 
+    console.log({
+      uploadUrl,
+      assetPath,
+      assetName,
+      assetContentType,
+      headers,
+    })
+
     const uploadAssetResponse = await octokit.rest.repos.uploadReleaseAsset({
       url: uploadUrl,
       headers,
