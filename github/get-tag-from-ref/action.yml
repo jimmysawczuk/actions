@@ -11,7 +11,7 @@ outputs:
   branch:
     description: "The branch, if present"
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/main.js"
 branding:
   icon: "filter"
