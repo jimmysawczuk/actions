@@ -1,5 +1,5 @@
 name: "Get tag from github.ref"
-description: "Get the tag from github.ref"
+description: "[DEPRECATED] Get the tag from github.ref - use github.ref_name instead"
 author: "Jimmy Sawczuk"
 inputs:
   ref:
