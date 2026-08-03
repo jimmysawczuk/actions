@@ -1,5 +1,7 @@
 # get-tag-from-ref
 
+> **Deprecated:** GitHub Actions now exposes `github.ref_name`, which gives you the tag or branch name directly without the `refs/tags/` or `refs/heads/` prefix. Use that instead of this action.
+
 **get-tag-from-ref** converts the `{{ github.ref }}` value from a string that looks like `refs/tags/v1.0.0` to `v1.0.0`. It produces an output you can use in later steps.
 
 ## Example usage
